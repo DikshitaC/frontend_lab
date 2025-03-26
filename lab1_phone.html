@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        h2 {
+            color: #333;
+        }
+        select, input[type="number"], button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        label, input[type="checkbox"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Product Billing</h2>
+        <label for="brand">Select Brand:</label>
+        <select id="brand">
+            <option value="HP">HP</option>
+            <option value="Nokia">Nokia</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Motorola">Motorola</option>
+            <option value="Apple">Apple</option>
+        </select>
+        <br><br>
+        <label>Select Product Type:</label><br>
+        <input type="checkbox" id="mobile" value="Mobile"> Mobile
+        <input type="checkbox" id="laptop" value="Laptop"> Laptop
+        <br><br>
+        <label for="quantity">Enter Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1">
+        <br><br>
+        <button id="produceBill">Produce Bill</button>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+            $("#produceBill").click(function(){
+                let quantity = parseInt($("#quantity").val());
+                let price = 0;
+                let brand = $("#brand").val();
+                
+                if ($("#mobile").is(":checked")) {
+                    if (brand === "HP") price += 20000;
+                    if (brand === "Nokia") price += 15000;
+                    if (brand === "Samsung") price += 25000;
+                    if (brand === "Motorola") price += 18000;
+                    if (brand === "Apple") price += 50000;
+                }
+                
+                if ($("#laptop").is(":checked")) {
+                    if (brand === "HP") price += 60000;
+                    if (brand === "Nokia") price += 50000;
+                    if (brand === "Samsung") price += 70000;
+                    if (brand === "Motorola") price += 55000;
+                    if (brand === "Apple") price += 100000;
+                }
+                
+                if (price === 0) {
+                    alert("Please select at least one product type.");
+                    return;
+                }
+                
+                let totalAmount = price * quantity;
+                alert("Total Amount: Rs. " + totalAmount);
+            });
+        });
+    </script>
+</body>
+</html>

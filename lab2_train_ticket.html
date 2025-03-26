@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Train Ticket Booking</h2>
+        <form id="ticketForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="train" class="form-label">Select Train</label>
+                <select class="form-select" id="train">
+                    <option value="express">Express Train</option>
+                    <option value="superfast">Superfast Train</option>
+                    <option value="luxury">Luxury Train</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="seat" class="form-label">Select Seat Type</label>
+                <select class="form-select" id="seat">
+                    <option value="sleeper">Sleeper - ₹500</option>
+                    <option value="ac">AC - ₹1000</option>
+                    <option value="firstclass">First Class - ₹2000</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Number of Tickets</label>
+                <input type="number" class="form-control" id="quantity" min="1" value="1" required>
+            </div>
+            <button type="button" class="btn btn-primary" id="bookTicket">Book Ticket</button>
+        </form>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+            $("#bookTicket").click(function(){
+                let name = $("#name").val().trim();
+                let seat = $("#seat").val();
+                let quantity = parseInt($("#quantity").val());
+                let price = 0;
+                
+                if (seat === "sleeper") price = 500;
+                if (seat === "ac") price = 1000;
+                if (seat === "firstclass") price = 2000;
+                
+                let totalAmount = price * quantity;
+                
+                if (name === "") {
+                    alert("Please enter your name.");
+                    return;
+                }
+                
+                alert("Thank you " + name + "! Your total booking amount is: ₹" + totalAmount);
+            });
+        });
+    </script>
+</body>
+</html>

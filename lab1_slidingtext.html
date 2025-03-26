@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Image and Text</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+        .wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .container {
+            position: relative;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            transform: translateX(100vw);
+            transition: transform 5s linear;
+        }
+        .image {
+            width: 100%;
+            display: block;
+        }
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            white-space: nowrap;
+        }
+        .wrapper:hover .container {
+            transform: translateX(-100vw);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".wrapper").hover(function(){
+                $(".container").css("transform", "translateX(-100vw)");
+            }, function(){
+                $(".container").css("transform", "translateX(100vw)");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.B39-1EvwOFXOffOfIKZT0AHaEK&pid=Api&P=0&h=180" alt="Image" class="image">
+            <div class="overlay">Hello</div>
+        </div>
+    </div>
+</body>
+</html>

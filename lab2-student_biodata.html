@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Bio-Data Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Bio-Data Form</h2>
+        <form>
+            <table border="1">
+                <tr>
+                    <td><label>Full Name:</label></td>
+                    <td><input type="text" placeholder="Enter your name"></td>
+                </tr>
+                <tr>
+                    <td><label>Gender:</label></td>
+                    <td>
+                        <input type="radio" name="gender" value="male"> Male
+                        <input type="radio" name="gender" value="female"> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Skills:</label></td>
+                    <td>
+                        <input type="checkbox" name="skills" value="html"> HTML
+                        <input type="checkbox" name="skills" value="css"> CSS
+                        <input type="checkbox" name="skills" value="js"> JavaScript
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Department:</label></td>
+                    <td>
+                        <select>
+                            <option>Computer Science</option>
+                            <option>Electronics</option>
+                            <option>Mechanical</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <button class="btn">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
